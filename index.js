@@ -2,17 +2,23 @@ const API_URL = 'http://localhost:3000'
 let counter = 0
 const inputEl = document.getElementById("input")
 const btn = document.getElementById("btn")
+const dataCount = document.getElementById("count")
+dataCount.textContent = counter
 async function getQuote(){
-    // console.log(inputEl)
-    if (inputEl.value == ""){
-        return alert("Input field can not be null")
+    console.log(!+inputEl.value)
+    if (inputEl.value == "" || !+inputEl.value ){
+        return alert("Input field must be a number and not empty!!!")
     }
-   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${inputEl.value}`)
+  try {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${inputEl.value}`)
 
-   const data = await res.json()
-   console.log(data)
-   const {userId, ...others} = data
-   createPostUI(others)
+    const data = await res.json()
+    console.log(data)
+    const {userId, ...others} = data
+    createPostUI(others)
+  } catch (error) {
+    alert(error.message)
+  }
 }
 function createPostUI(data){
     const quoteEl = document.getElementById("quote")
@@ -38,7 +44,7 @@ async function consumeAPI(signal) {
 
   return reader
 }
-
+let d_count = 0
 function appendToHTML(element) {
   let elementsCounter = 0
   return new WritableStream({
@@ -59,6 +65,9 @@ function appendToHTML(element) {
       }
 
       element.innerHTML += card
+      
+      dataCount.textContent = d_count+=1
+      console.log(d_count)
     },
     abort(reason) {
       console.log('aborted**', reason)
