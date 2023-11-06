@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebStreams</title>
+
+    <style>
+        .container{
+            padding: 10px;
+        }
+
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-gap: 20px;
+            align-items: stretch;
+        }
+        .grid > article{
+            border: 1px solid #ccc;
+        }
+        .text{
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <input type="text" placeholder="type to see the browser is not blocked" id="input">
+        <button id="btn">get post</button>
+        <h3>This is an inplementation of reading huge  data from a server without blocking the event loop {`(both client and server)`}.</h4>
+            <hr>
+            <h4>You can interactive with the app while it's still reading the data. To try this for yourself, while processing the data, You can make an api call to json placeholder api to get a post with id as you entered in the input field </h4>
+
+            <div id="quotes">
+                <p id="quote"></p>
+            </div>
+    </div>
+
+    
+    <div class="container">
+        <div id="cards" class="grid">
+            <!-- <article>
+                <div class="text">
+                    <h3>Test 0</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, quam?</p>
+                    <a href="#">Here's Why</a>
+                </div>
+            </article> -->
+        </div>
+    </div>
+
+    <script src="./index.js" type="module"></script>
+</body>
+</html>
