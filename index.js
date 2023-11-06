@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000'
+const API_URL = 'https://data-fetching-with-streams-api.vercel.app/'
 let counter = 0
 const inputEl = document.getElementById("input")
 const btn = document.getElementById("btn")
